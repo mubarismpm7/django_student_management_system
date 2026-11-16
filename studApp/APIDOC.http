@@ -1,0 +1,76 @@
+###
+POST http://127.0.0.1:8000/user 
+Content-Type: application/json
+
+{
+    "username":"Hanin",
+    "password":"Hanin123",
+    "email": "Hanin@gmail.com"
+}
+
+
+
+###
+POST http://127.0.0.1:8000/token 
+Content-Type: application/json
+
+{
+    "username":"Hanin",
+    "password":"Hanin123",
+    "email": "Hanin@gmail.com"
+}
+
+###
+@token=07a8455e9ba790c8bc43464fb6d2fd473a154279
+
+
+#1.Create a New Student
+###
+POST http://127.0.0.1:8000/student
+Authorization: Token {{token}}
+Content-Type:application/json
+
+{
+    "name":"Sabith",
+    "email":"sabith@gmail.com",
+    "phone":"7567815562",
+    "course":"Python Django",
+    "fee":"15000.0",
+    "joining_date":"2026-06-01"
+}
+
+
+
+# 2.Retrieve All Students
+###
+GET http://127.0.0.1:8000/student
+Authorization: Token {{token}}
+
+
+
+# 3.Retrieve one student using id
+###
+GET http://127.0.0.1:8000/student/1/
+Authorization: Token {{token}}
+
+# 4.update a student
+###
+PATCH http://127.0.0.1:8000/student/6/
+Authorization: Token {{token}}
+Content-Type: application/json
+
+{
+    "phone":"9876054327"
+}
+
+# 5.Delete a student
+###
+DELETE http://127.0.0.1:8000/student/4/
+Authorization: Token {{token}}
+
+
+
+#Search by name or course
+###
+GET http://127.0.0.1:8000/student/?search=python
+Authorization: Token {{token}}
